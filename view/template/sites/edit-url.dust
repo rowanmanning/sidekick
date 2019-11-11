@@ -1,0 +1,13 @@
+{>"layout/full"/}
+
+{<title}
+	Editing URL - Sidekick
+{/title}
+
+{<content}
+
+	<h1>Edit URL</h1>
+
+	{>"partial/form/url" action=requestPath cta="Save changes"/}
+
+{/content}

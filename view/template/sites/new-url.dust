@@ -1,0 +1,13 @@
+{>"layout/full"/}
+
+{<title}
+	Creating URLs - Sidekick
+{/title}
+
+{<content}
+
+	<h1>Add a new URL</h1>
+
+	{>"partial/form/url" action=requestPath cta="Add to URL list"/}
+
+{/content}

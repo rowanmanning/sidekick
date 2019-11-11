@@ -1,0 +1,41 @@
+
+<form data-test="url-form" action="{action}" method="post" enctype="application/x-www-form-urlencoded">
+
+	{>"partial/alert/success" success=form.url.success/}
+	{>"partial/alert/error" errors=form.url.errors/}
+
+	<div class="field field--text">
+		<label for="url-name">
+			Name
+			<span class="field__sublabel">
+				A human-readable name for the URL, this appears across the interface
+			</span>
+		</label>
+		<input id="url-name" type="text" name="name" value="{form.url.name}" required/>
+	</div>
+
+	<div class="field field--text">
+		<label for="url-address">
+			URL to appended
+			<span class="field__sublabel">
+				The URL to be appended on to the base URL of the site, starting with "/".  For example, /index.html
+			</span>
+		</label>
+		<input id="url-address" type="text" name="address" value="{form.url.address}" placeholder="{site.baseUrl}" required/>
+	</div>
+
+    <!-- TODO we haven't decided what format this data takes yet -->
+	<div class="field field--checkbox">
+		<label for="url-pa11y-config">
+		    Pa11y Config
+			<span class="field__sublabel">
+				Need to decide how to input this data...
+			</span>
+		</label>
+	</div>
+
+	<div class="field">
+		<input type="submit" value="{cta}" class="button button--submit"/>
+	</div>
+
+</form>

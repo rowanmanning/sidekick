@@ -1,0 +1,30 @@
+{>"layout/full"/}
+
+{<title}
+	Deleting URL - Sidekick
+{/title}
+
+{<content}
+
+	<h1>Deleting URL</h1>
+
+	<p>
+		This action is permanent and unrecoverable.
+		Any data associated with this URL
+		will no longer be accessible.
+	</p>
+
+	<p>
+		Are you sure you wish to delete the URL
+		<b>{form.url.name}</b> <em>({form.url.address})</em>?
+	</p>
+
+	<form data-test="delete-url-form" action="{requestPath}" method="post" enctype="application/x-www-form-urlencoded">
+
+		<div class="field">
+			<input type="submit" value="Delete URL" class="button button--danger"/>
+		</div>
+
+	</form>
+
+{/content}

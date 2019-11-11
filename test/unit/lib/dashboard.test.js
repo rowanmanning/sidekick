@@ -16,7 +16,10 @@ describe('lib/dashboard', () => {
 	let getAppUrl;
 	let initApiV1Controller;
 	let initFrontEndController;
+	let initIssueModel;
+	let initIssueTypeModel;
 	let initKeyModel;
+	let initResultModel;
 	let initSettingModel;
 	let initSiteModel;
 	let initUrlModel;
@@ -56,8 +59,17 @@ describe('lib/dashboard', () => {
 		initFrontEndController = sinon.stub().returns(require('../mock/controller/front-end.mock'));
 		mockery.registerMock('../controller/front-end', initFrontEndController);
 
+		initIssueModel = sinon.stub().returns(require('../mock/model/issue.mock'));
+		mockery.registerMock('../model/issue', initIssueModel);
+
+		initIssueTypeModel = sinon.stub().returns(require('../mock/model/issue-type.mock'));
+		mockery.registerMock('../model/issue-type', initIssueTypeModel);
+
 		initKeyModel = sinon.stub().returns(require('../mock/model/key.mock'));
 		mockery.registerMock('../model/key', initKeyModel);
+
+		initResultModel = sinon.stub().returns(require('../mock/model/result.mock'));
+		mockery.registerMock('../model/result', initResultModel);
 
 		initSettingModel = sinon.stub().returns(require('../mock/model/setting.mock'));
 		mockery.registerMock('../model/setting', initSettingModel);
@@ -139,8 +151,14 @@ describe('lib/dashboard', () => {
 		});
 
 		it('initialises all of the models', () => {
+			assert.calledOnce(initIssueModel);
+			assert.calledWithExactly(initIssueModel, dashboard);
+			assert.calledOnce(initIssueTypeModel);
+			assert.calledWithExactly(initIssueTypeModel, dashboard);
 			assert.calledOnce(initKeyModel);
 			assert.calledWithExactly(initKeyModel, dashboard);
+			assert.calledOnce(initResultModel);
+			assert.calledWithExactly(initResultModel, dashboard);
 			assert.calledOnce(initSettingModel);
 			assert.calledWithExactly(initSettingModel, dashboard);
 			assert.calledOnce(initSiteModel);
@@ -153,7 +171,10 @@ describe('lib/dashboard', () => {
 
 		it('has a `model` property set to a map of the initialised models', () => {
 			assert.isObject(dashboard.model);
+			assert.strictEqual(dashboard.model.Issue, initIssueModel.firstCall.returnValue);
+			assert.strictEqual(dashboard.model.IssueType, initIssueTypeModel.firstCall.returnValue);
 			assert.strictEqual(dashboard.model.Key, initKeyModel.firstCall.returnValue);
+			assert.strictEqual(dashboard.model.Result, initResultModel.firstCall.returnValue);
 			assert.strictEqual(dashboard.model.Setting, initSettingModel.firstCall.returnValue);
 			assert.strictEqual(dashboard.model.Site, initSiteModel.firstCall.returnValue);
 			assert.strictEqual(dashboard.model.Url, initUrlModel.firstCall.returnValue);

@@ -16,6 +16,9 @@
 
 	<div class="heading-wrapper">
 		<h1>{site.name}</h1>
+		{?permissions.read}
+			<a href="/sites/{site.id}/run" class="button">Run pa11y against base URL or first appended URL</a>
+    	{/permissions.read}
 	</div>
 
 	<dl>
@@ -26,5 +29,58 @@
 		<dt>Scheduled</dt>
 		<dd>{?site.isScheduled}Yes{:else}No{/site.isScheduled}</a></dd>
 	</dl>
+
+    <hr>
+
+	<div class="heading-wrapper">
+   	    <h2>URLs</h2>
+		{?permissions.write}
+        	<a href="{site.id}/urls/new" class="button">Add a new URL for this site</a>
+        {/permissions.write}
+	</div>
+
+	{?urls}
+   		<div class="table-wrapper">
+   			<table data-test="urls-table" class="table table--striped">
+   				<thead>
+   					<tr>
+   						<th>Name</th>
+   						<th>URL to Append</th>
+   						<th>Pa11y Config</th>
+   						<th>Options</th>
+   					</tr>
+   				</thead>
+   				<tbody>
+   					{#urls}
+   						<tr>
+   							<td>{name}</td>
+   							<td>{address}</td>
+   							<td>
+   							    {#pa11yConfig}
+   							        <ul>
+   							            {?pa11yConfig.actions}
+   							                <li>Actions: {pa11yConfig.actions}</li>
+   							            {/pa11yConfig.actions}
+   							            {?pa11yConfig.runners}
+   							                <li>Runners: {pa11yConfig.runners}</li>
+   							            {/pa11yConfig.runners}
+   							            {?pa11yConfig.standard}
+   							                <li>Standard: {pa11yConfig.standard}</li>
+   							            {/pa11yConfig.standard}
+                                       </ul>
+                                   {/pa11yConfig}
+   							</td>
+   							<td>
+   								<a href="/sites/{site}/urls/{id}/edit">Edit</a>
+   								<a href="/sites/{site}/urls/{id}/delete">Delete</a>
+   							</td>
+   						</tr>
+   					{/urls}
+   				</tbody>
+   			</table>
+   		</div>
+   	{:else}
+   	<p>You don't have any URLs to test for this site yet; you can <a href="{site.id}/urls/new">add one here</a>.</p>
+   	{/urls}
 
 {/content}

@@ -1,0 +1,23 @@
+version: '3.1'
+services:
+  sidekick:
+    image: sidekick
+    ports: 
+      - 8082:8080
+    environment:
+      DATABASE_URL: postgres://sidekick:sidekick@db:5432/sidekick
+      LOG_LEVEL: debug
+      NODE_ENV: development
+      PORT: 8080
+      SESSION_SECRET: "${SESSION_SECRET:-b3c542a1-79ce-46a1-b958-06e352eba249}"
+  db:
+    image: postgres:9.5
+    restart: always
+    environment:
+      POSTGRES_USER: sidekick
+      POSTGRES_PASSWORD: sidekick
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080

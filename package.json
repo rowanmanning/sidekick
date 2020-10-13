@@ -23,7 +23,7 @@
     "adaro": "^1.0.4",
     "bcrypt": "^3.0.6",
     "bookshelf": "^0.15.1",
-    "canvas": "^2.6.0",
+    "canvas": "^2.6.1",
     "compression": "^1.7.4",
     "connect-session-knex": "^1.4.0",
     "dotenv": "^8.2.0",
@@ -32,13 +32,13 @@
     "http-errors": "^1.7.3",
     "@hapi/joi": "^15.1.1",
     "knex": "^0.17.6",
-    "lodash": "^4.17.15",
-    "morgan": "^1.9.1",
+    "lodash": "^4.17.20",
+    "morgan": "^1.10.0",
     "nocache": "^2.1.0",
-    "pg": "^7.12.1",
+    "pg": "^8.4.1",
     "require-header": "^1.0.4",
     "shortid": "^2.2.15",
-    "winston": "^2.4.0"
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "@rowanmanning/eslint-config": "^2.1.0",
@@ -48,12 +48,12 @@
     "jsdom": "^15.2.0",
     "mocha": "^6.2.2",
     "mockery": "^2.1.0",
-    "nodemon": "^1.19.4",
-    "nyc": "^14.1.1",
+    "nodemon": "^2.0.4",
+    "nyc": "^15.1.0",
     "proclaim": "^3.6.0",
-    "request": "^2.88.0",
-    "request-promise-native": "^1.0.7",
-    "sinon": "^7.5.0"
+    "request": "^2.88.2",
+    "request-promise-native": "^1.0.9",
+    "sinon": "^9.2.0"
   },
   "optionalDependencies": {
     "fsevents": "^2.1.1"
